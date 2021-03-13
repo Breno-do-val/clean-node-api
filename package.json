@@ -4,8 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests --no-cach",
-    "test:staged": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests --no-cache",
+    "test:staged": "jest --passWithNoTests --no-cache"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint 'src/**' --fix",
+      "npm run test:staged"
+    ]
   },
   "keywords": [],
   "author": "",
